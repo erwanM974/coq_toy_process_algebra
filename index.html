@@ -23,6 +23,21 @@
 <a id="lab1"></a><h1 class="section">Example Coq Proof on a toy process algebra example</h1>
 
 
+<div class="paragraph"> </div>
+
+We define a very simple process algebra with (strict) sequential and alternative composition.
+We then prove the equivalence of two formulations of a trace semantics for this
+process algebraic language.
+Those are:
+<ul class="doclist">
+<li> a denotational formulation defined inductively by composition of sets of traces
+
+</li>
+<li> a structural operational formulation as is classically done in process calculus
+
+</li>
+</ul>
+
 </div>
 <div class="code">
 
@@ -157,6 +172,7 @@
 <br/>
 <span class="id" title="keyword">Theorem</span> <span class="id" title="var">op_implies_de</span> (<span class="id" title="var">p</span> : <span class="id" title="var">PATerm</span>) (<span class="id" title="var">s</span> : <span class="id" title="var">Sequence</span>) :<br/>
 &nbsp;&nbsp;(<span class="id" title="var">sem_op</span> <span class="id" title="var">p</span> <span class="id" title="var">s</span>) -&gt; (<span class="id" title="var">sem_de</span> <span class="id" title="var">p</span> <span class="id" title="var">s</span>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
 <span class="id" title="tactic">intros</span> <span class="id" title="var">H</span>.<br/>
 <span class="id" title="tactic">dependent</span> <span class="id" title="tactic">induction</span> <span class="id" title="var">s</span> <span class="id" title="var">generalizing</span> <span class="id" title="var">p</span>.<br/>
 - <span class="id" title="tactic">apply</span> <span class="id" title="var">terminates_implies_de_accept_empty</span>.<br/>
@@ -265,6 +281,7 @@
 <br/>
 <span class="id" title="keyword">Theorem</span> <span class="id" title="var">de_implies_op</span> (<span class="id" title="var">p</span> : <span class="id" title="var">PATerm</span>) (<span class="id" title="var">s</span> : <span class="id" title="var">Sequence</span>) :<br/>
 &nbsp;&nbsp;(<span class="id" title="var">sem_de</span> <span class="id" title="var">p</span> <span class="id" title="var">s</span>) -&gt; (<span class="id" title="var">sem_op</span> <span class="id" title="var">p</span> <span class="id" title="var">s</span>).<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
 <span class="id" title="tactic">intros</span> <span class="id" title="var">H</span>.<br/>
 <span class="id" title="tactic">dependent</span> <span class="id" title="tactic">induction</span> <span class="id" title="var">s</span> <span class="id" title="var">generalizing</span> <span class="id" title="var">p</span>.<br/>
 - <span class="id" title="tactic">apply</span> <span class="id" title="var">sem_op_empty</span>.<br/>

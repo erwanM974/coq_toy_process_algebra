@@ -1,6 +1,13 @@
 (* =========================================================== *)
 (**
 * Example Coq Proof on a toy process algebra example
+
+We define a very simple process algebra with (strict) sequential and alternative composition.
+We then prove the equivalence of two formulations of a trace semantics for this
+process algebraic language.
+Those are:
+- a denotational formulation defined inductively by composition of sets of traces
+- a structural operational formulation as is classically done in process calculus
 **)
 
 Require Import List.
@@ -123,6 +130,7 @@ Qed.
 
 Theorem op_implies_de (p : PATerm) (s : Sequence) :
   (sem_op p s) -> (sem_de p s).
+Proof.
 intros H.
 dependent induction s generalizing p.
 - apply terminates_implies_de_accept_empty.
@@ -228,6 +236,7 @@ Qed.
 
 Theorem de_implies_op (p : PATerm) (s : Sequence) :
   (sem_de p s) -> (sem_op p s).
+Proof.
 intros H.
 dependent induction s generalizing p. 
 - apply sem_op_empty.
